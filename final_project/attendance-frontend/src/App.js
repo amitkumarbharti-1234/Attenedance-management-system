@@ -40,11 +40,16 @@ const App = () => {
   // API Request Function
   const apiRequest = async (method, url, data) => {
     try {
+      const headers = {
+        "Content-Type": "application/json"
+      };
+      const token = localStorage.getItem('token');
+      if (token) {
+        headers["Authorization"] = `Bearer ${token}`;
+      }
       const response = await fetch(url, {
         method: method.toUpperCase(),
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers,
         body: data ? JSON.stringify(data) : null,
       });
       if (!response.ok) {

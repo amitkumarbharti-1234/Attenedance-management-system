@@ -22,8 +22,6 @@ app.use(cors()); // Allow frontend access
 // Routes
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
-app.use('/api/session', require('./routes/session'));
-app.use('/api/auth/me', require('./routes/auth'));
 
 // Debugging: Log unhandled routes
 app.use((req, res, next) => {
